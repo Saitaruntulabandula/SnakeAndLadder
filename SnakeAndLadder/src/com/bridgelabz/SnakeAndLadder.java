@@ -4,30 +4,36 @@ public class SnakeAndLadder {
 	public static final int NO_PLAY = 0;
 	public static final int LADDER = 1;
 	public static final int SNAKE = 2;
-	
+
 	public static void main(String[] args) {
-		int playerCurrentPosition = 0;
-		System.out.println("Initial position of player is : " +playerCurrentPosition);
+		int startingPosition = 0;
+		System.out.println("Initial position of player is : " +startingPosition);
+		
+		while(startingPosition<100) {
 		int numberOnDie = RandomDieValue();
 		System.out.println("Number on Die is : " +numberOnDie);
 		int option = RandomOption();
-		System.out.println("The option is " +option);
 		
 		switch(option) {
 		case LADDER :
-			playerCurrentPosition+=numberOnDie;
+			System.out.println("The option is Ladder " +LADDER );
+			startingPosition+=numberOnDie;
+			if (startingPosition>100)
+				startingPosition=100;
 			break;
 		case SNAKE:
-			playerCurrentPosition-=numberOnDie;
-			if (playerCurrentPosition < 0)
-				playerCurrentPosition = 0;
+			System.out.println("The option is Snake " +SNAKE);
+			startingPosition-=numberOnDie;
+			if (startingPosition < 0)
+				startingPosition = 0;
 			break;
 		default:
 			System.out.println("No play");
+			}
+		System.out.println("Current Position of Player :  "+startingPosition);
 		}
-		System.out.println(playerCurrentPosition);		
+		System.out.println("player Won");	
 	}
-
 	private static int RandomOption() {
 		int RandomOption = (int) Math.floor((Math.random() * 3));
 		return RandomOption;
@@ -36,6 +42,5 @@ public class SnakeAndLadder {
 	private static int RandomDieValue() {
 		int RandomDieValue = (int) Math.floor((Math.random() * 6) + 1);
 		return RandomDieValue;
-	
-    }
+	}
 }

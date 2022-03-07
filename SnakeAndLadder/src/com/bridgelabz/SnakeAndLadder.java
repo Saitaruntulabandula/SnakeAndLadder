@@ -1,14 +1,16 @@
 package com.bridgelabz;
 
-import java.util.Random;
-
 public class SnakeAndLadder {
-
-	public static void main(String[] args) {
-		int position = 0;
-		System.out.println("Initial position of the player:"+position);
-		Random rand = new Random();
-		int dieResult = rand.nextInt(7-1)+1;
-		System.out.println("Die Result: "+dieResult);
+	private static int RandomDieValue() {
+		int RandomValue = (int) Math.floor((Math.random() * 6) + 1);
+		return RandomValue;
 	}
+	
+	public static void main(String[] args) {
+		int startingPosition = 0;
+		int numberOnDie;
+		System.out.println("Initial position of player is : " +startingPosition);
+		numberOnDie = RandomDieValue();
+		System.out.println("Number on Die is : " +numberOnDie);	
+    }
 }

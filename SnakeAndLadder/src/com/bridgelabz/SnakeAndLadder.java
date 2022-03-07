@@ -4,12 +4,13 @@ public class SnakeAndLadder {
 	public static final int NO_PLAY = 0;
 	public static final int LADDER = 1;
 	public static final int SNAKE = 2;
+	public static final int WINNIGPOSITION = 100;
 
 	public static void main(String[] args) {
 		int startingPosition = 0;
 		System.out.println("Initial position of player is : " +startingPosition);
 		
-		while(startingPosition<100) {
+		while(startingPosition<WINNIGPOSITION) {
 		int numberOnDie = RandomDieValue();
 		System.out.println("Number on Die is : " +numberOnDie);
 		int option = RandomOption();
@@ -18,9 +19,11 @@ public class SnakeAndLadder {
 		case LADDER :
 			System.out.println("The option is Ladder " +LADDER );
 			startingPosition+=numberOnDie;
-			if (startingPosition>100)
-				startingPosition=100;
-			break;
+			if (startingPosition>100) {
+				startingPosition-=numberOnDie;
+				System.out.println("Current position crossed 100,So Please roll the die again !!!!!");
+			}
+				break;
 		case SNAKE:
 			System.out.println("The option is Snake " +SNAKE);
 			startingPosition-=numberOnDie;
@@ -32,7 +35,7 @@ public class SnakeAndLadder {
 			}
 		System.out.println("Current Position of Player :  "+startingPosition);
 		}
-		System.out.println("player Won");	
+		System.out.println("player Won");		
 	}
 	private static int RandomOption() {
 		int RandomOption = (int) Math.floor((Math.random() * 3));
